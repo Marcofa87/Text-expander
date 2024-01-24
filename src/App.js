@@ -30,6 +30,7 @@ export default function App() {
         travel is a pretty cool thing to think about. Who knows what we'll
         discover next!
         <h1>Hello</h1>
+        <p>Myname is Marco</p>
       </TextExpander>
     </div>
   );
