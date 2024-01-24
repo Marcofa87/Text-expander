@@ -36,6 +36,6 @@ export default function App() {
   );
 }
 
-function TextExpander() {
-  return <div>TODO</div>;
+function TextExpander({ children }) {
+  return <div>{children}</div>;
 }
