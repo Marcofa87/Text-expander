@@ -29,12 +29,11 @@ export default function App() {
         have inspired future generations to keep reaching for the stars. Space
         travel is a pretty cool thing to think about. Who knows what we'll
         discover next!
-        <h1>Hello</h1>
       </TextExpander>
     </div>
   );
 }
 
-function TextExpander() {
-  return <div>TODO</div>;
+function TextExpander({ children, onRate }) {
+  return <div>{children}</div>;
 }
