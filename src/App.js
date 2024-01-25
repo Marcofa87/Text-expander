@@ -34,6 +34,6 @@ export default function App() {
   );
 }
 
-function TextExpander({ children }) {
+function TextExpander({ children, onRate }) {
   return <div>{children}</div>;
 }
