@@ -14,12 +14,18 @@ export default function App() {
         collapseButtonText="Show Less"
         onHandleOpen={handleOpen}
         expanded={true}
+        show={show}
       >
         Space travel is the ultimate adventure! Imagine soaring past the stars
-        and exploring new worlds. It's the stuff of dreams and science fiction,
-        but believe it or not, space travel is a real thing. Humans and robots
-        are constantly venturing out into the cosmos to uncover its secrets and
-        push the boundaries of what's possible.
+        and exploring new worlds.
+        {show && (
+          <>
+            It's the stuff of dreams and science fiction, but believe it or not,
+            space travel is a real thing. Humans and robots are constantly
+            venturing out into the cosmos to uncover its secrets and push the
+            boundaries of what's possible.
+          </>
+        )}
       </TextExpander>
 
       <TextExpander
@@ -54,6 +60,7 @@ export default function App() {
 
 function TextExpander({
   children,
+  show,
   collapsedNumWords,
   expandButtonText,
   collapseButtonText,
@@ -70,9 +77,9 @@ function TextExpander({
   return (
     <>
       <div className={className}>
-        {children}
+        <span>{children}</span>
         <span role="button" style={styleText} onClick={onHandleOpen}>
-          {expanded ? expandButtonText : collapseButtonText}
+          {show ? collapseButtonText : expandButtonText}
         </span>
       </div>
     </>
