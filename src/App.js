@@ -53,10 +53,13 @@ function TextExpander({
   expanded,
   className,
 }) {
+  const styleText = {
+    color: buttonColor,
+  };
   return (
     <>
       <div className={className}>{children}</div>
-      <span role="button" style={{ color: buttonColor }}>
+      <span role="button" style={styleText}>
         {expandButtonText}
       </span>
     </>
