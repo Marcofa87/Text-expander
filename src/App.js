@@ -1,9 +1,14 @@
+import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  const [show, setShow] = useState(true);
+  function handleOpen() {
+    setShow(!show);
+  }
   return (
     <div>
-      <TextExpander>
+      <TextExpander buttonColor="blue" expandButtonText="Show More">
         Space travel is the ultimate adventure! Imagine soaring past the stars
         and exploring new worlds. It's the stuff of dreams and science fiction,
         but believe it or not, space travel is a real thing. Humans and robots
@@ -24,7 +29,12 @@ export default function App() {
         foot on the moon or when rovers were sent to roam around on Mars.
       </TextExpander>
 
-      <TextExpander expanded={true} className="box">
+      <TextExpander
+        expanded={true}
+        className="box"
+        expandButtonText="Show more"
+        buttonColor="blue"
+      >
         Space missions have given us incredible insights into our universe and
         have inspired future generations to keep reaching for the stars. Space
         travel is a pretty cool thing to think about. Who knows what we'll
@@ -34,6 +44,21 @@ export default function App() {
   );
 }
 
-function TextExpander({ children, onRate }) {
-  return <div>{children}</div>;
+function TextExpander({
+  children,
+  collapsedNumWords,
+  expandButtonText,
+  collapseButtonText,
+  buttonColor,
+  expanded,
+  className,
+}) {
+  return (
+    <>
+      <div className={className}>{children}</div>
+      <span role="button" style={{ color: buttonColor }}>
+        {expandButtonText}
+      </span>
+    </>
+  );
 }
