@@ -1,16 +1,28 @@
+import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  const [show, setShow] = useState(true);
+  function handleOpen() {
+    setShow(!show);
+
+    console.log("ciao");
+  }
   return (
     <div>
-      <TextExpander>
-        Space travel is the ultimate adventure! Imagine soaring past the stars
-        and exploring new worlds. It's the stuff of dreams and science fiction,
-        but believe it or not, space travel is a real thing. Humans and robots
-        are constantly venturing out into the cosmos to uncover its secrets and
-        push the boundaries of what's possible.
-      </TextExpander>
-
+      {show && (
+        <TextExpander
+          buttonColor="blue"
+          expandButtonText="Show More"
+          onHandleOpen={handleOpen}
+        >
+          Space travel is the ultimate adventure! Imagine soaring past the stars
+          and exploring new worlds. It's the stuff of dreams and science
+          fiction, but believe it or not, space travel is a real thing. Humans
+          and robots are constantly venturing out into the cosmos to uncover its
+          secrets and push the boundaries of what's possible.
+        </TextExpander>
+      )}
       <TextExpander
         collapsedNumWords={20}
         expandButtonText="Show text"
@@ -23,8 +35,12 @@ export default function App() {
         results are out of this world. Think about the first time humans stepped
         foot on the moon or when rovers were sent to roam around on Mars.
       </TextExpander>
-
-      <TextExpander expanded={true} className="box">
+      <TextExpander
+        expanded={true}
+        className="box"
+        expandButtonText="Show more"
+        buttonColor="blue"
+      >
         Space missions have given us incredible insights into our universe and
         have inspired future generations to keep reaching for the stars. Space
         travel is a pretty cool thing to think about. Who knows what we'll
@@ -34,6 +50,29 @@ export default function App() {
   );
 }
 
-function TextExpander({ children, onRate }) {
-  return <div>{children}</div>;
+function TextExpander({
+  children,
+  collapsedNumWords,
+  expandButtonText,
+  collapseButtonText,
+  buttonColor,
+  expanded,
+  className,
+  onHandleOpen,
+}) {
+  const styleText = {
+    color: buttonColor,
+    cursor: "pointer",
+  };
+
+  return (
+    <>
+      <div className={className}>
+        {children}
+        <span role="button" style={styleText} onClick={onHandleOpen}>
+          {expandButtonText}
+        </span>
+      </div>
+    </>
+  );
 }
