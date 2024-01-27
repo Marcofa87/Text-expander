@@ -74,10 +74,3 @@ function TextExpander({
     </>
   );
 }
-
-/* 
-
-
-  onClick={() => setIsShown((exp) => !exp)}
-
- */
